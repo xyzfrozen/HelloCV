@@ -1,0 +1,14 @@
+# 编译目录与产物
+/build/
+/cmake-build-*/
+*.o
+*.obj
+/main
+/calculator
+
+# 本地编辑器配置与缓存
+/.vscode/
+/.idea/
+*.swp
+*.swo
+*~
