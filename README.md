@@ -9,9 +9,8 @@
 | Linux 学习与实践记录 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/ka6agsl342sammss) |
 | Git 学习笔记 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt) |
 | Git 计算器实践记录 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/utcsciwdap9kb6qg) |
-| 计算器源码与开发历史 | [Gitee：git_training](https://gitee.com/xyzfrozen/git_training) |
+| Gitee仓库 | [Gitee：git_training](https://gitee.com/xyzfrozen/git_training) |
 
-全部笔记链接及内容说明见 [笔记链接汇总](NOTES.md)。
 
 ## 仓库结构
 
@@ -112,11 +111,6 @@ git_training/
 
 ### 编译运行
 
-```bash
-g++ -std=c++17 -Wall -Wextra main.cpp -o calculator
-./calculator
-```
-
 输入顺序是“第一个整数 第二个整数 运算符”，使用空格分隔。例如：
 
 ```text
@@ -143,11 +137,3 @@ git log --oneline --graph --decorate --all
 ```
 
 命令操作、stash 使用、分支合并和运行截图见 Git 实践语雀文档。
-
-## 提交方式
-
-此公开仓库为提交入口：
-
-[https://github.com/xyzfrozen/HelloCV](https://github.com/xyzfrozen/HelloCV)
-
-提交前使用无登录浏览器检查三篇语雀文档和 Gitee 计算器仓库是否公开可读，再将本仓库链接填写到纳新群问卷星。
