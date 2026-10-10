@@ -6,9 +6,9 @@
 
 | 内容 | 链接 |
 |---|---|
-| Linux 学习与实践记录 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/ka6agsl342sammss) |
-| Git 学习笔记 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt) |
-| Git 计算器实践记录 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/utcsciwdap9kb6qg) |
+| Linux 学习与实践记录 | [语雀文档]([https://www.yuque.com/xyzfrozen/mcnuvk/ka6agsl342sammss](https://www.yuque.com/g/xyzfrozen/mcnuvk/ka6agsl342sammss/collaborator/join?token=brbpBfO1XAZb5Mgn&source=doc_collaborator# 《Linux》)) |
+| Git 学习笔记 | [语雀文档]([https://www.yuque.com/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt](https://www.yuque.com/g/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt/collaborator/join?token=MOhgGilKVyCwheM4&source=doc_collaborator# 《Git-学习内容》)) |
+| Git 计算器实践记录 | [语雀文档]([https://www.yuque.com/xyzfrozen/mcnuvk/utcsciwdap9kb6qg](https://www.yuque.com/g/xyzfrozen/mcnuvk/utcsciwdap9kb6qg/collaborator/join?token=MhN6ZaNoi8qjN5Hl&source=doc_collaborator# 《Git-实践内容》)) |
 | Gitee仓库 | [Gitee：git_training](https://gitee.com/xyzfrozen/git_training) |
 
 
