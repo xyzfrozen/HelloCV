@@ -4,11 +4,11 @@
 
 | 笔记 | 语雀地址 | 本仓库材料 |
 |---|---|---|
-| Cmake-学习内容 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/dkpc9875qgm26wek) | [学习笔记](docs/cmake-practice/CMake学习笔记.md) |
-| Cmake-实践任务 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/rknl54skmrhtx821) | [实践笔记](docs/cmake-practice/CMake实践笔记.md)、[UnitConverter 源码](UnitConverter/) |
-| LLM任务 | [语雀文档](https://www.yuque.com/xyzfrozen/mcnuvk/gvg0nz3rwzxmsuzp) | [四模块与十函数笔记](docs/llm/LLM网关模块笔记.md)、[独立测试记录](docs/llm/LLM网关测试验证记录.md)、[skeleton 源码](skeleton/) |
+| Cmake-学习内容 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/dkpc9875qgm26wek/collaborator/join?token=Z9hHADDYexzDoUHo&source=doc_collaborator) | [学习笔记](docs/cmake-practice/CMake学习笔记.md) |
+| Cmake-实践任务 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/rknl54skmrhtx821/collaborator/join?token=8h0XgVdFNgMwRyEM&source=doc_collaborator) | [实践笔记](docs/cmake-practice/CMake实践笔记.md)、[UnitConverter 源码](UnitConverter/) |
+| LLM任务 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/gvg0nz3rwzxmsuzp/collaborator/join?token=WwoBG4GmdzOmcVd6&source=doc_collaborator) | [四模块与十函数笔记](docs/llm/LLM网关模块笔记.md)、[独立测试记录](docs/llm/LLM网关测试验证记录.md)、[skeleton 源码](skeleton/) |
 
-以上三篇语雀文档使用普通文档地址，访问权限由语雀文档设置决定。GitHub 内提供 Markdown 版本，便于直接阅读和修改。
+以上三篇语雀文档使用作者提供的完整只读协作邀请链接，协作权限为“可阅读”；访问时按语雀页面提示登录。GitHub 内提供 Markdown 版本，便于直接阅读和修改。
 
 ## Linux 学习与实践
 
