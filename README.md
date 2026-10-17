@@ -1,139 +1,139 @@
 # HelloCV
 
-第一次任务的学习与实践材料汇总，包含 Ubuntu/Linux 环境搭建、Git 学习和分支开发计算器。
+哈尔滨工业大学（威海）创新平台任务的学习与实践记录：Ubuntu/Linux、Git、CMake 单位转换器，以及 LLM 石头剪刀布决策网关。
 
-## 材料入口
+## 学习笔记
 
-| 内容 | 链接 |
-|---|---|
-| Linux 学习与实践记录 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/ka6agsl342sammss/collaborator/join?token=brbpBfO1XAZb5Mgn&source=doc_collaborator) |
-| Git 学习笔记 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt/collaborator/join?token=MOhgGilKVyCwheM4&source=doc_collaborator) |
-| Git 计算器实践记录 | [语雀文档](https://www.yuque.com/g/xyzfrozen/mcnuvk/utcsciwdap9kb6qg/collaborator/join?token=MhN6ZaNoi8qjN5Hl&source=doc_collaborator) |
-| Gitee仓库 | [Gitee：git_training](https://gitee.com/xyzfrozen/git_training) |
+| 内容 | 语雀笔记 | 仓库材料 |
+|---|---|---|
+| CMake 学习内容 | [Cmake-学习内容](https://www.yuque.com/xyzfrozen/mcnuvk/dkpc9875qgm26wek) | [Markdown 笔记](docs/cmake-practice/CMake学习笔记.md) |
+| CMake 实践任务 | [Cmake-实践任务](https://www.yuque.com/xyzfrozen/mcnuvk/rknl54skmrhtx821) | [实践笔记](docs/cmake-practice/CMake实践笔记.md)、[转换器源码](UnitConverter/) |
+| LLM 任务 | [LLM任务](https://www.yuque.com/xyzfrozen/mcnuvk/gvg0nz3rwzxmsuzp) | [模块笔记](docs/llm/LLM网关模块笔记.md)、[测试验证记录](docs/llm/LLM网关测试验证记录.md)、[网关源码](skeleton/) |
 
+以上三篇语雀文档使用普通文档地址，访问权限由语雀文档设置决定。仓库内同时保留 Markdown 笔记，模块讲解与测试验证分别成文，命令和输出使用代码块记录。
 
-## 仓库结构
+此前的 [Linux 学习与实践](https://www.yuque.com/xyzfrozen/mcnuvk/ka6agsl342sammss)、[Git 学习](https://www.yuque.com/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt)、[Git 实践](https://www.yuque.com/xyzfrozen/mcnuvk/utcsciwdap9kb6qg)及[计算器源码](https://gitee.com/xyzfrozen/git_training)仍保留，完整入口见 [NOTES.md](NOTES.md)。
+
+## 目录结构
 
 ```text
 HelloCV/
-├── README.md     # 环境配置、材料入口和运行方法
-├── NOTES.md      # Linux 与 Git 语雀笔记链接汇总
-└── .gitignore    # 编译产物与本地编辑器文件忽略规则
+├── README.md
+├── NOTES.md
+├── UnitConverter/              # C++17 主程序和 unitlib 静态库
+│   ├── CMakeLists.txt
+│   ├── src/main.cpp
+│   └── unitlib/
+│       ├── CMakeLists.txt
+│       ├── include/unitlib.h
+│       └── src/unitlib.cpp
+├── skeleton/                   # 完成后的 Python LLM 网关
+│   ├── gateway/                # 四个核心模块及配置、提示词、游戏逻辑
+│   ├── tests/                  # 104 个自动测试
+│   ├── samples/requests.jsonl
+│   ├── run_gateway.py
+│   ├── play_game.py
+│   ├── mock_llm_server.py
+│   ├── selfcheck.py
+│   └── requirements.txt
+└── docs/
+    ├── cmake-practice/          # CMake 学习、实践笔记和验证脚本
+    └── llm/                     # 模块笔记、独立测试记录和 API 验证数据
 ```
 
-计算器源码保存在独立的 `git_training` 仓库中，本仓库作为任务提交入口。
+## CMake：单位转换器
 
-## 开发环境
+支持摄氏度与华氏度、米与英尺、磅与千克六个方向的换算。`unitlib` 负责公式，`main.cpp` 使用 `while(cin>>n)`、`if` 和 `else if` 完成交互。选择 `0` 或结束输入即可退出。
 
-使用原生 Ubuntu 22.04.5 LTS。环境验证记录中的主要版本如下：
+需要 CMake ≥ 3.16、支持 C++17 的编译器以及对应构建工具。以下命令从仓库根目录执行：
 
-| 工具 | 版本 |
+```bash
+cmake -S UnitConverter -B UnitConverter/build -DCMAKE_BUILD_TYPE=Debug
+cmake --build UnitConverter/build --parallel 2
+./UnitConverter/build/unit_converter
+```
+
+例如依次输入 `1`、`0`、`0`，先将 0 摄氏度换算为 32 华氏度，再退出。
+
+运行 18 个命令行用例，并验证构建、本地安装与产物忽略规则：
+
+```bash
+python3 docs/cmake-practice/scripts/verify.py
+```
+
+也可单独安装到本地目录：
+
+```bash
+cmake --install UnitConverter/build --prefix "$PWD/UnitConverter/install"
+./UnitConverter/install/bin/unit_converter
+```
+
+## LLM：石头剪刀布决策网关
+
+网关每次读取一行 JSON，调用兼容 Chat Completions 的上游接口，再输出只有 `time` 和 `option` 的一行 JSON。输出时间以请求为准，出拳只能是 `rock`、`scissor` 或 `paper`。上游失败或回复不符合协议时使用本地规则兜底。
+
+| 核心模块 | 功能 |
 |---|---|
-| GCC / G++ | 11.4.0 |
-| Git | 2.34.1 |
-| Make / CMake | 4.3 / 3.22.1 |
-| VS Code | 1.122.0 |
-| ROS2 | Humble |
-| Vim / tmux | 8.2 / 3.2a |
-| Node.js / npm / PM2 | 22.16.0 / 10.9.2 / 7.0.4 |
+| `json_guard.py` | 去除代码围栏、提取配平对象、修复常见 JSON 文本问题 |
+| `rules.py` | 出拳归一化、字段校验和本地兜底 |
+| `client.py` | 请求体构造、HTTP 调用、分类重试和回复提取 |
+| `app.py` | 串联请求解析、上游调用、JSON 整理、校验与最终输出 |
 
-### Ubuntu 基础工具
+### 安装与自检
 
-```bash
-sudo apt update
-sudo apt install build-essential gcc g++ make cmake git nmap \
-  ssh openssh-client openssh-server vim flex bison tmux wget
-```
-
-SSH 服务端可通过以下命令启动并设置开机启用：
+需要 Python ≥ 3.9。从仓库根目录执行：
 
 ```bash
-sudo systemctl enable --now ssh
-systemctl is-active ssh
+cd skeleton
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python selfcheck.py
 ```
 
-### VS Code、ROS2 和 Node.js
+当前 10 个核心函数已完成，104 个测试通过，包括原有 93 个测试、7 个 JSON 容错补充测试和 4 个本地配置测试。测试会在本机启动 HTTP 服务，不需要真实 API Key。
 
-可使用 FishROS 安装入口，在菜单中分别选择 VS Code、ROS/ROS2 和 Node.js 环境；ROS2 选择 Humble。
+### 离线运行
+
+以下命令均在 `skeleton/` 中执行：
 
 ```bash
-wget http://fishros.com/install -O fishros && . fishros
+printf '%s\n' '{"time":"t1"}' '{"time":"t2","history":["rock"]}' | python run_gateway.py --offline --quiet
+python play_game.py --offline --rounds 6 --strategy cycle
 ```
 
-安装 ROS2 后加载环境：
+### 本地模拟上游
+
+一个终端启动服务：
 
 ```bash
-source /opt/ros/humble/setup.bash
+python mock_llm_server.py --port 8801
 ```
 
-Node.js 环境准备好后，将 PM2 安装到用户目录：
+另一个终端进入 `skeleton/`、激活同一虚拟环境后执行：
 
 ```bash
-npm install -g --prefix "$HOME/.local" pm2
-export PATH="$HOME/.local/bin:$PATH"
+python run_gateway.py --api-base-url http://127.0.0.1:8801 --api-key test --input samples/requests.jsonl --quiet
+python play_game.py --rounds 6 --api-base-url http://127.0.0.1:8801 --api-key test
 ```
 
-当前中文输入使用 Fcitx 与搜狗拼音。详细安装入口、配置、运行截图和问题记录见 Linux 语雀文档。
+### DeepSeek API
 
-### 环境检查
+在运行程序的同一个终端中读取并导出自己的密钥：
 
 ```bash
-g++ --version
-git --version
-cmake --version
-code --version
-vim --version
-tmux -V
-ssh -V
-node --version
-npm --version
-pm2 --version
-ros2 --help
+read -rsp 'DeepSeek API Key: ' DEEPSEEK_API_KEY
+printf '\n'
+export DEEPSEEK_API_KEY
+python play_game.py --rounds 3 --strategy cycle --api-base-url https://api.deepseek.com --model deepseek-flash
 ```
 
-## 计算器编译与使用
+也支持在 `skeleton/.env` 或仓库根目录 `.env` 中配置 `DEEPSEEK_API_KEY`。读取优先级为显式参数 → 环境变量 → `skeleton/.env` → 仓库根目录 `.env`。私有配置已被 Git 忽略，仓库不包含真实密钥。
 
-### 获取源码
+2026-10-17 的真实 API 验证完成 3 轮对局，本地兜底 0 轮；结果与命令见[测试验证记录](docs/llm/LLM网关测试验证记录.md)。
 
-```bash
-git clone https://gitee.com/xyzfrozen/git_training.git
-cd git_training
-```
+## 来源与运行环境
 
-源码结构：
+LLM 练习基于 [u5343/traning_repo](https://gitee.com/u5343/traning_repo) 的 `skeleton` 脚手架完成，保留测试与命令行入口，补全四个模块及相关配置支持。原练习的 `example/` 参考目录不在本仓库中。
 
-```text
-git_training/
-├── main.cpp     # 读取输入并选择运算
-├── addsub.h     # 加法与减法实现
-└── muldiv.h     # 乘法与除法实现
-```
-
-### 编译运行
-
-输入顺序是“第一个整数 第二个整数 运算符”，使用空格分隔。例如：
-
-```text
-输入：8 2 +
-输出：10
-```
-
-| 输入 | 输出 |
-|---|---|
-| `8 2 +` | `10` |
-| `8 2 -` | `6` |
-| `8 2 *` | `16` |
-| `8 2 /` | `4` |
-| `7 2 /` | `3` |
-
-当前程序使用整数运算，因此除法结果会截去小数部分。除数不能为 0，运算符需使用 `+`、`-`、`*`、`/`；当前版本没有完整的非法输入处理。
-
-## Git 开发过程
-
-计算器在 `feature/add-sub` 和 `feature/mul-div` 分支中分别实现加减法与乘除法，再合并到 `main`。可在源码仓库查看提交关系：
-
-```bash
-git log --oneline --graph --decorate --all
-```
-
-命令操作、stash 使用、分支合并和运行截图见 Git 实践语雀文档。
+本次验证环境为 Ubuntu 22.04、CMake 3.22.1、G++ 11.4.0 和 Python 3.10.12。更完整的工具安装记录见 Linux 笔记。

@@ -1,0 +1,35 @@
+{
+  "tested_at": "2026-10-17T11:12:12.755590+08:00",
+  "base_url": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "strategy": "cycle",
+  "rounds": [
+    {
+      "index": 1,
+      "time": "2026-10-17T03:12:10.161202+00:00",
+      "model_option": "rock",
+      "opponent_option": "rock",
+      "result": 0,
+      "notes": []
+    },
+    {
+      "index": 2,
+      "time": "2026-10-17T03:12:11.093710+00:00",
+      "model_option": "paper",
+      "opponent_option": "scissor",
+      "result": -1,
+      "notes": []
+    },
+    {
+      "index": 3,
+      "time": "2026-10-17T03:12:12.006365+00:00",
+      "model_option": "paper",
+      "opponent_option": "paper",
+      "result": 0,
+      "notes": []
+    }
+  ],
+  "fallback_rounds": 0,
+  "summary": "共 3 轮：模型赢 0 / 平 2 / 输 1（其中本地兜底 0 轮）",
+  "output": "DeepSeek 官方 API：三轮实际对局，strategy=cycle\n第  1 轮  模型=rock  对手=rock(cycle)  平局  \n第  2 轮  模型=paper  对手=scissor(cycle)  模型输  \n第  3 轮  模型=paper  对手=paper(cycle)  平局  \n共 3 轮：模型赢 0 / 平 2 / 输 1（其中本地兜底 0 轮）"
+}

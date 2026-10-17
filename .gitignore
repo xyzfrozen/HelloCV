@@ -1,14 +1,37 @@
-# 编译目录与产物
+# CMake 构建和安装产物
 /build/
 /cmake-build-*/
+/UnitConverter/build*/
+/UnitConverter/install/
 *.o
 *.obj
 /main
 /calculator
 
-# 本地编辑器配置与缓存
+# Python 环境、缓存和运行输出
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+decisions*.jsonl
+
+# 本地私有配置
+.env
+.env.*
+*.key
+
+# 编辑器和本地生成记录
 /.vscode/
 /.idea/
+/.playwright-cli/
+/output/playwright/
+/docs/cmake-practice/images/
+/docs/cmake-practice/report/
+/docs/cmake-practice/logs/
+/docs/cmake-practice/scripts/capture.py
+/docs/cmake-practice/scripts/make_report.py
 *.swp
 *.swo
 *~
