@@ -6,12 +6,12 @@
 
 | 内容 | 语雀笔记 | 仓库材料 |
 |---|---|---|
-| ROS2（第三次任务） | 待补充 | [学习笔记及配图](docs/ros2/ROS2.md)、[C++ 示例工作空间](ros2_ws/)、[构建验证记录](docs/ros2/构建验证记录.md) |
+| ROS2（第三次任务） | [ROS2](https://www.yuque.com/g/xyzfrozen/mcnuvk/wttyseq8p4hvwygz/collaborator/join?token=iUmQq6r6hEQjA7wR&source=doc_collaborator) | [学习笔记及配图](docs/ros2/ROS2.md)、[C++ 示例工作空间](ros2_ws/)、[构建验证记录](docs/ros2/构建验证记录.md) |
 | CMake 学习内容 | [Cmake-学习内容](https://www.yuque.com/g/xyzfrozen/mcnuvk/dkpc9875qgm26wek/collaborator/join?token=Z9hHADDYexzDoUHo&source=doc_collaborator) | [Markdown 笔记](docs/cmake-practice/CMake学习笔记.md) |
 | CMake 实践任务 | [Cmake-实践任务](https://www.yuque.com/g/xyzfrozen/mcnuvk/rknl54skmrhtx821/collaborator/join?token=8h0XgVdFNgMwRyEM&source=doc_collaborator) | [实践笔记](docs/cmake-practice/CMake实践笔记.md)、[转换器源码](UnitConverter/) |
 | LLM 任务 | [LLM任务](https://www.yuque.com/g/xyzfrozen/mcnuvk/gvg0nz3rwzxmsuzp/collaborator/join?token=WwoBG4GmdzOmcVd6&source=doc_collaborator) | [模块笔记](docs/llm/LLM网关模块笔记.md)、[测试验证记录](docs/llm/LLM网关测试验证记录.md)、[网关源码](skeleton/) |
 
-以上三篇语雀文档使用作者提供的完整只读协作邀请链接，协作权限为“可阅读”；访问时按语雀页面提示登录。仓库内同时保留 Markdown 笔记，模块讲解与测试验证分别成文，命令和输出使用代码块记录。
+CMake 与 LLM 的三篇语雀文档使用作者提供的完整只读协作邀请链接，协作权限为“可阅读”；访问时按语雀页面提示登录。仓库内同时保留 Markdown 笔记，模块讲解与测试验证分别成文，命令和输出使用代码块记录。
 
 此前的 [Linux 学习与实践](https://www.yuque.com/xyzfrozen/mcnuvk/ka6agsl342sammss)、[Git 学习](https://www.yuque.com/xyzfrozen/mcnuvk/gggicdc7nbrhrkpt)、[Git 实践](https://www.yuque.com/xyzfrozen/mcnuvk/utcsciwdap9kb6qg)及[计算器源码](https://gitee.com/xyzfrozen/git_training)仍保留，完整入口见 [NOTES.md](NOTES.md)。
 
@@ -48,7 +48,7 @@ HelloCV/
 
 ## ROS2：节点、通信与可视化
 
-[ROS2 学习笔记](docs/ros2/ROS2.md)保留学习过程中的讲解、命令和代码，配图存放在同目录的 `images/` 中。笔记中的本机路径是当时的学习记录；克隆后按下面的相对路径构建即可。语雀链接尚未添加。
+[ROS2 学习笔记](docs/ros2/ROS2.md)保留学习过程中的讲解、命令和代码，配图存放在同目录的 `images/` 中。笔记中的本机路径是当时的学习记录；克隆后按下面的相对路径构建即可。在线阅读：[语雀《ROS2》](https://www.yuque.com/g/xyzfrozen/mcnuvk/wttyseq8p4hvwygz/collaborator/join?token=iUmQq6r6hEQjA7wR&source=doc_collaborator)。
 
 示例环境为 Ubuntu 22.04 + ROS2 Humble，使用 C++17 和 `rclcpp`。工作空间包含最小节点、定时器、Topic 发布/订阅、Service 服务端/客户端、动态参数，以及合成图像和目标 Marker；Launch 文件可启动多个示例、加载 YAML 并重映射话题。
 

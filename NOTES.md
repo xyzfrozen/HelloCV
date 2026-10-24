@@ -6,7 +6,7 @@
 - [ROS2 示例工作空间](ros2_ws/README.md)：笔记中八个完整 C++ 示例及对应的 CMake、包依赖、Launch 和 YAML。
 - [构建验证记录](docs/ros2/构建验证记录.md)：记录构建、安装和配置加载的验证范围。
 
-ROS2 语雀链接待补充，目前提供仓库内的 Markdown 版本。
+在线阅读：[语雀《ROS2》](https://www.yuque.com/g/xyzfrozen/mcnuvk/wttyseq8p4hvwygz/collaborator/join?token=iUmQq6r6hEQjA7wR&source=doc_collaborator)。仓库内同时保留 Markdown 版本及配套示例代码。
 
 ## 第二次任务
 
