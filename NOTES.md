@@ -1,5 +1,13 @@
 # 学习笔记链接汇总
 
+## 第三次任务：ROS2
+
+- [ROS2 学习笔记](docs/ros2/ROS2.md)：工作空间、C++ 节点与执行器、Topic/QoS、Service、参数、Launch、TF/RViz 和常用调试命令；包含两张配图。
+- [ROS2 示例工作空间](ros2_ws/README.md)：笔记中八个完整 C++ 示例及对应的 CMake、包依赖、Launch 和 YAML。
+- [构建验证记录](docs/ros2/构建验证记录.md)：记录构建、安装和配置加载的验证范围。
+
+ROS2 语雀链接待补充，目前提供仓库内的 Markdown 版本。
+
 ## 第二次任务
 
 | 笔记 | 语雀地址 | 本仓库材料 |

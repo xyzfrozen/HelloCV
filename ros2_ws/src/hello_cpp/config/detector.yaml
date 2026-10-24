@@ -1,0 +1,3 @@
+threshold_node:
+  ros__parameters:
+    threshold: 0.65

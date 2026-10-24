@@ -1,11 +1,12 @@
 # HelloCV
 
-哈尔滨工业大学（威海）创新平台任务的学习与实践记录：Ubuntu/Linux、Git、CMake 单位转换器，以及 LLM 石头剪刀布决策网关。
+哈尔滨工业大学（威海）创新平台任务的学习与实践记录：Ubuntu/Linux、Git、CMake 单位转换器、LLM 石头剪刀布决策网关，以及 ROS2 Humble C++ 基础。
 
 ## 学习笔记
 
 | 内容 | 语雀笔记 | 仓库材料 |
 |---|---|---|
+| ROS2（第三次任务） | 待补充 | [学习笔记及配图](docs/ros2/ROS2.md)、[C++ 示例工作空间](ros2_ws/)、[构建验证记录](docs/ros2/构建验证记录.md) |
 | CMake 学习内容 | [Cmake-学习内容](https://www.yuque.com/g/xyzfrozen/mcnuvk/dkpc9875qgm26wek/collaborator/join?token=Z9hHADDYexzDoUHo&source=doc_collaborator) | [Markdown 笔记](docs/cmake-practice/CMake学习笔记.md) |
 | CMake 实践任务 | [Cmake-实践任务](https://www.yuque.com/g/xyzfrozen/mcnuvk/rknl54skmrhtx821/collaborator/join?token=8h0XgVdFNgMwRyEM&source=doc_collaborator) | [实践笔记](docs/cmake-practice/CMake实践笔记.md)、[转换器源码](UnitConverter/) |
 | LLM 任务 | [LLM任务](https://www.yuque.com/g/xyzfrozen/mcnuvk/gvg0nz3rwzxmsuzp/collaborator/join?token=WwoBG4GmdzOmcVd6&source=doc_collaborator) | [模块笔记](docs/llm/LLM网关模块笔记.md)、[测试验证记录](docs/llm/LLM网关测试验证记录.md)、[网关源码](skeleton/) |
@@ -20,6 +21,9 @@
 HelloCV/
 ├── README.md
 ├── NOTES.md
+├── ros2_ws/                    # ROS2 Humble：8 个 C++ 示例、Launch 和 YAML
+│   ├── README.md               # 环境、构建和运行方式
+│   └── src/hello_cpp/          # 节点、Topic、Service、参数、图像和 Marker
 ├── UnitConverter/              # C++17 主程序和 unitlib 静态库
 │   ├── CMakeLists.txt
 │   ├── src/main.cpp
@@ -38,8 +42,35 @@ HelloCV/
 │   └── requirements.txt
 └── docs/
     ├── cmake-practice/          # CMake 学习、实践笔记和验证脚本
-    └── llm/                     # 模块笔记、独立测试记录和 API 验证数据
+    ├── llm/                     # 模块笔记、独立测试记录和 API 验证数据
+    └── ros2/                    # ROS2 学习笔记、配图和构建验证记录
 ```
+
+## ROS2：节点、通信与可视化
+
+[ROS2 学习笔记](docs/ros2/ROS2.md)保留学习过程中的讲解、命令和代码，配图存放在同目录的 `images/` 中。笔记中的本机路径是当时的学习记录；克隆后按下面的相对路径构建即可。语雀链接尚未添加。
+
+示例环境为 Ubuntu 22.04 + ROS2 Humble，使用 C++17 和 `rclcpp`。工作空间包含最小节点、定时器、Topic 发布/订阅、Service 服务端/客户端、动态参数，以及合成图像和目标 Marker；Launch 文件可启动多个示例、加载 YAML 并重映射话题。
+
+从仓库根目录执行：
+
+```bash
+source /opt/ros/humble/setup.bash
+cd ros2_ws
+colcon build --packages-select hello_cpp --symlink-install
+source install/setup.bash
+ros2 launch hello_cpp learning.launch.py
+```
+
+另开终端加载同一个工作空间的环境后，可以检查：
+
+```bash
+ros2 topic echo /vision/demo_status --once
+ros2 param get /threshold_node threshold
+ros2 service call /set_detection std_srvs/srv/SetBool "{data: true}"
+```
+
+完整环境依赖、单节点入口和 TF/RViz 运行方式见 [ROS2 工作空间说明](ros2_ws/README.md)。示例消息和图像为模拟数据，各模块用于独立验证基础功能。
 
 ## CMake：单位转换器
 
